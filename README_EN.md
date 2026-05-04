@@ -6,6 +6,31 @@ This skill is designed for research seminars, paper discussions, reproduction pr
 
 [中文 README](README.md)
 
+## Recommended Setup: ChatGPT Web
+
+**The recommended way to use this skill is inside a ChatGPT Web/App Project.** The core experience is: generate a deep reading report first, then create cartoon explainers stage by stage, then assemble the approved images into a PDF. The storyboard phase works best with ChatGPT's Create image capability.
+
+Before uploading a paper, do this first: **add the skill to the ChatGPT Project `Sources` first, then upload the paper.** If you only upload a paper and ask for a summary, the model may behave like a generic paper summarizer instead of following the staged report, cartoon, and PDF workflow.
+
+ClawHub skill page:
+
+[https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer)
+
+Recommended steps:
+
+1. Open the ClawHub page above and download the skill zip.
+2. Create or open a Project in ChatGPT Web/App.
+3. Add this skill to the Project `Sources`. You can upload the skill zip, or upload the extracted `SKILL.md`, `README.md`, and related workflow/schema files.
+4. After the skill is present in `Sources`, upload the paper PDF / LaTeX source.
+5. Ask for the full text-only deep reading report first. Do not generate images in the first step.
+6. Follow the skill's next-step prompts to generate cartoon pages stage by stage, then assemble the final PDF.
+
+OpenClaw / ClawHub CLI users can also install it with:
+
+```bash
+openclaw skills install paper-deep-reading-teaching-explainer
+```
+
 ## Demo
 
 The example below comes from a complete `SemiDFL` run: a deep reading report first, then 18 staged cartoon explainer pages, then one combined PDF.
@@ -76,9 +101,9 @@ Default stages:
 
 ## Quick Start
 
-1. Download or upload `paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip`.
-2. Enable it in a skill-compatible environment such as ClawHub, OpenClaw, a ChatGPT project, or another compatible agent setup.
-3. Upload a paper PDF, LaTeX source, or both.
+1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip` from this repository.
+2. Prefer ChatGPT Web/App Projects, and add the skill to Project `Sources` first.
+3. Then upload a paper PDF, LaTeX source, or both.
 4. Ask the skill to generate the full text-only deep reading report first.
 5. Follow the suggested next prompts to generate cartoon pages stage by stage.
 6. After approving all images, run the final PDF assembly step.

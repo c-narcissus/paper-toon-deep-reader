@@ -6,6 +6,31 @@
 
 [English README](README_EN.md)
 
+## 推荐使用方式：ChatGPT 网页版
+
+**强烈建议在 ChatGPT 网页版 / App 的 Project 里使用这个 skill。** 这个 skill 的核心体验是“先精读，再分阶段生成卡通图，再合成 PDF”，其中卡通图阶段最适合直接使用 ChatGPT 的 Create image 能力。
+
+使用前请先做一件事：**先把 skill 放进 ChatGPT Project 的 Sources 里，再上传论文。** 不建议只上传论文就直接提问，否则模型可能只做普通论文总结，无法稳定遵守分阶段精读、漫画生成和 PDF 合成流程。
+
+ClawHub skill 地址：
+
+[https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer)
+
+推荐使用步骤：
+
+1. 打开上面的 ClawHub 页面，下载 skill zip。
+2. 在 ChatGPT 网页版中新建或打开一个 Project。
+3. 在 Project 的 `Sources` 里放入这个 skill，建议上传 skill zip，或上传解压后的 `SKILL.md`、`README.md` 和相关 workflow/schema 文件。
+4. 确认 skill 已经在 `Sources` 中后，再上传要精读的论文 PDF / LaTeX。
+5. 先要求生成完整文字精读报告，不要在第一步生成图片。
+6. 按 skill 给出的下一步提示，分阶段生成卡通图，最后合成 PDF。
+
+OpenClaw / ClawHub CLI 用户也可以使用：
+
+```bash
+openclaw skills install paper-deep-reading-teaching-explainer
+```
+
 ## 效果预览
 
 下面示例来自 `SemiDFL` 论文的一次完整运行：先产出精读报告，再分阶段生成 18 张卡通讲解页，最后合成为 PDF。
@@ -76,10 +101,10 @@ flowchart LR
 
 ## 快速开始
 
-1. 下载或上传 `paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip`。
-2. 在支持 skill 的环境中启用它，例如 ClawHub / OpenClaw / ChatGPT 项目或其他兼容环境。
-3. 上传论文 PDF、LaTeX 源码，或同时提供两者。
-4. 先让 skill 生成完整精读报告。
+1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip`。
+2. 推荐在 ChatGPT 网页版 Project 中使用，并先把 skill 放入 Project `Sources`。
+3. 然后上传论文 PDF、LaTeX 源码，或同时提供两者。
+4. 先让 skill 生成完整文字精读报告。
 5. 根据它给出的下一步提示，逐阶段生成卡通图。
 6. 所有图片确认后，执行最终 PDF 合成。
 
