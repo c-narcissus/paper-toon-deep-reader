@@ -50,7 +50,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: [paper-deep-reading-teaching-explainer-v10.1.6-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.6-clawhub.zip)
+- Skill package: [paper-deep-reading-teaching-explainer-v10.1.7-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.7-clawhub.zip)
 
 ## What It Does
 
@@ -61,6 +61,7 @@ The skill creates three layers of output:
 3. **Cartoon storyboard + PDF**: after the report is complete, it generates staged cartoon-comic pages for the background, method, experiments, limitations, future directions, and final presentation package, then assembles the approved images into one PDF.
 4. **Continuous storyboard consistency**: multi-image cartoon batches preserve character, style, color, symbol language, data-flow direction, page numbering, camera/framing logic, and the storyboard bible from previous batches.
 5. **Image anti-hallucination checks**: image prompts and generated results must respect the original paper and the prior authoritative deep-reading report; unsupported facts are removed, marked `not reported`, or sent back for evidence.
+6. **Multi-image decomposition**: different visual parts are split into multiple continuous images by default, with one teaching point per image instead of forcing background, method, experiments, and limitations into one crowded graphic.
 
 ## Workflow
 
@@ -106,7 +107,7 @@ Default stages:
 
 ## Quick Start
 
-1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.6-clawhub.zip` from this repository.
+1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.7-clawhub.zip` from this repository.
 2. Prefer ChatGPT Web/App Projects, and add the skill to Project `Sources` first.
 3. Then upload a paper PDF, LaTeX source, or both.
 4. Ask the skill to generate the full text-only deep reading report first.
