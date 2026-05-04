@@ -50,7 +50,7 @@ openclaw skills install paper-deep-reading-teaching-explainer
 
 - 示例 PDF：[SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - ChatGPT 项目页面导出示例：[SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill 包：[paper-deep-reading-teaching-explainer-v10.1.4-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.4-clawhub.zip)
+- Skill 包：[paper-deep-reading-teaching-explainer-v10.1.5-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.5-clawhub.zip)
 
 ## 这个 Skill 做什么
 
@@ -59,6 +59,7 @@ openclaw skills install paper-deep-reading-teaching-explainer
 1. **论文精读报告**：梳理论文背景、问题、核心假设、方法结构、实验逻辑、局限性和可延伸的研究想法。
 2. **教学讲解材料**：把复杂方法转成 30 秒、3 分钟、10 分钟都能讲清楚的版本，并准备公式讲解、图表讲解、实验讲解、误解提醒和答辩 Q&A。
 3. **卡通漫画讲解 + PDF**：在精读报告完成后，分阶段生成连续漫画页，覆盖背景动机、旧方法缺陷、算法模块、实验结果、局限与答辩、未来方向，最后合成为一份完整 PDF。
+4. **连续分镜一致性**：生成连续多张卡通图时，会要求保持角色、风格、色彩、符号、数据流方向、页面编号和运镜逻辑一致；后续批次会继承前面已生成图片的 storyboard bible。
 
 ## 推荐工作流
 
@@ -103,7 +104,7 @@ flowchart LR
 
 ## 快速开始
 
-1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.4-clawhub.zip`。
+1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.5-clawhub.zip`。
 2. 推荐在 ChatGPT 网页版 Project 中使用，并先把 skill 放入 Project `Sources`。
 3. 然后上传论文 PDF、LaTeX 源码，或同时提供两者。
 4. 先让 skill 生成完整文字精读报告。

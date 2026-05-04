@@ -50,7 +50,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: [paper-deep-reading-teaching-explainer-v10.1.4-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.4-clawhub.zip)
+- Skill package: [paper-deep-reading-teaching-explainer-v10.1.5-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.5-clawhub.zip)
 
 ## What It Does
 
@@ -59,6 +59,7 @@ The skill creates three layers of output:
 1. **Deep reading report**: motivation, problem setting, assumptions, method structure, experiment logic, limitations, and research idea opportunities.
 2. **Teaching explainer package**: 30-second, 3-minute, and 10-minute summaries, plus scripts for formulas, figures, tables, experiments, misconceptions, and defense Q&A.
 3. **Cartoon storyboard + PDF**: after the report is complete, it generates staged cartoon-comic pages for the background, method, experiments, limitations, future directions, and final presentation package, then assembles the approved images into one PDF.
+4. **Continuous storyboard consistency**: multi-image cartoon batches preserve character, style, color, symbol language, data-flow direction, page numbering, camera/framing logic, and the storyboard bible from previous batches.
 
 ## Workflow
 
@@ -89,6 +90,7 @@ Default stages:
 - **Understand first, draw later**: the first run creates the full report before image generation starts.
 - **Staged visual generation**: one visual stage at a time, so users can review, revise, and keep control.
 - **Built-in next-step guidance**: each stage can tell the user what to ask next and provide copy-ready prompts.
+- **Continuity-aware image prompts**: prompt batches include image order, camera/framing, transition logic, style bible, symbol bible, and consistency with earlier images.
 - **Session recovery friendly**: if context is lost, users can continue with prompts such as: `使用这个skill，根据状态，执行第2步：生成算法整体流程与各模块解释的连续卡通图。`
 - **Guidance when users are unsure**: users can simply ask: `使用这个skill，根据状态，告知下一步应该问什么。`
 - **Made for teaching and defense**: the skill prepares explanations, misconception guardrails, role-play discussion prompts, defense questions, and presentation structure.
@@ -103,7 +105,7 @@ Default stages:
 
 ## Quick Start
 
-1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.4-clawhub.zip` from this repository.
+1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.5-clawhub.zip` from this repository.
 2. Prefer ChatGPT Web/App Projects, and add the skill to Project `Sources` first.
 3. Then upload a paper PDF, LaTeX source, or both.
 4. Ask the skill to generate the full text-only deep reading report first.
