@@ -50,7 +50,7 @@ openclaw skills install paper-deep-reading-teaching-explainer
 
 - 示例 PDF：[SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - ChatGPT 项目页面导出示例：[SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill 包：[paper-deep-reading-teaching-explainer-v10.1.2-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.2-clawhub.zip)
+- Skill 包：[paper-deep-reading-teaching-explainer-v10.1.3-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.3-clawhub.zip)
 
 ## 这个 Skill 做什么
 
@@ -103,7 +103,7 @@ flowchart LR
 
 ## 快速开始
 
-1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.2-clawhub.zip`。
+1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.3-clawhub.zip`。
 2. 推荐在 ChatGPT 网页版 Project 中使用，并先把 skill 放入 Project `Sources`。
 3. 然后上传论文 PDF、LaTeX 源码，或同时提供两者。
 4. 先让 skill 生成完整文字精读报告。
