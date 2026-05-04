@@ -31,6 +31,8 @@ OpenClaw / ClawHub CLI users can also install it with:
 openclaw skills install paper-deep-reading-teaching-explainer
 ```
 
+If you use the skill in Codex, Claude Code, or another coding-agent environment, prefer the `imagegen` skill for cartoon image generation. Fall back to ChatGPT Images 2.0 API or another user-approved image-generation API only when `imagegen` is unavailable or insufficient.
+
 ## Demo
 
 The example below comes from a complete `SemiDFL` run: a deep reading report first, then 18 staged cartoon explainer pages, then one combined PDF.
@@ -48,7 +50,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: [paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip)
+- Skill package: [paper-deep-reading-teaching-explainer-v10.1.2-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.2-clawhub.zip)
 
 ## What It Does
 
@@ -101,7 +103,7 @@ Default stages:
 
 ## Quick Start
 
-1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.1-clawhub.zip` from this repository.
+1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.2-clawhub.zip` from this repository.
 2. Prefer ChatGPT Web/App Projects, and add the skill to Project `Sources` first.
 3. Then upload a paper PDF, LaTeX source, or both.
 4. Ask the skill to generate the full text-only deep reading report first.
