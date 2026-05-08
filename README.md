@@ -1,110 +1,105 @@
 # Paper Deep Reading Teaching Explainer
 
-把一篇论文从“读过”推进到“讲得清、能答辩、可展示”的教学型精读 skill。
-
-这个 skill 面向科研阅读、组会讲解、论文复现准备、答辩演示和课程助教场景。它先生成有证据约束的论文精读报告，再把报告拆成多个阶段的卡通漫画讲解图，最后把确认后的图片合成为一份可分享的 PDF。
+**一句话：把论文变成能讲、能答、能在手机上翻看的卡通精读 PDF。**
 
 [English README](README_EN.md)
 
-## 推荐使用方式：ChatGPT 网页版
+## 100 字总结
 
-**强烈建议在 ChatGPT 网页版 / App 的 Project 里使用这个 skill。** 这个 skill 的核心体验是“先精读，再分阶段生成卡通图，再合成 PDF”，其中卡通图阶段最适合直接使用 ChatGPT 的 Create image 能力。
+这个 skill 面向组会、课程、复现和答辩场景：先基于论文 PDF/LaTeX 生成可追溯的精读报告，再按背景、方法、实验、局限、未来方向分阶段生成连续卡通图，最后把确认后的图片合成 PDF。默认手机竖屏、中文对白、风格一致，也支持自定义画幅、语言和漫画风格。
 
-使用前请先做一件事：**先把 skill 放进 ChatGPT Project 的 Sources 里，再上传论文。** 不建议只上传论文就直接提问，否则模型可能只做普通论文总结，无法稳定遵守分阶段精读、漫画生成和 PDF 合成流程。
+## 案例效果
 
-ClawHub skill 地址：
+示例来自 `SemiDFL` 论文：先产出精读报告，再分阶段生成 18 张卡通讲解页，最后合成为 PDF。该示例是早期 16:9 横版效果；当前版本默认生成 9:16 手机竖屏，用户仍可切回 16:9。
 
-[https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer)
+<div align="center">
+  <img src="assets/demo/storyboard-pages-01-18-contact-sheet.jpg" width="680" alt="18-page cartoon storyboard overview" />
+</div>
 
-推荐使用步骤：
-
-1. 打开上面的 ClawHub 页面，下载 skill zip。
-2. 在 ChatGPT 网页版中新建或打开一个 Project。
-3. 在 Project 的 `Sources` 里放入这个 skill，建议上传 skill zip，或上传解压后的 `SKILL.md`、`README.md` 和相关 workflow/schema 文件。
-4. 确认 skill 已经在 `Sources` 中后，再上传要精读的论文 PDF / LaTeX。
-5. 先要求生成完整文字精读报告，不要在第一步生成图片。
-6. 按 skill 给出的下一步提示，分阶段生成卡通图，最后合成 PDF。
-
-OpenClaw / ClawHub CLI 用户也可以使用：
-
-```bash
-openclaw skills install paper-deep-reading-teaching-explainer
-```
-
-如果在 Codex、Claude Code 或其他 coding-agent 环境中使用，生成卡通图时建议优先调用 `imagegen` skill；只有在 `imagegen` 不可用或能力不足时，再使用 ChatGPT Images 2.0 API 或其他用户批准的生图 API。
-
-## 效果预览
-
-下面示例来自 `SemiDFL` 论文的一次完整运行：先产出精读报告，再分阶段生成 18 张卡通讲解页，最后合成为 PDF。该示例是早期 16:9 横版运行效果；当前版本默认生成 9:16 手机竖屏，用户仍可切回 16:9。
-
-![18-page cartoon storyboard overview](assets/demo/storyboard-pages-01-18-contact-sheet.jpg)
-
-<p>
-  <img src="assets/demo/page-01.png" width="49%" alt="Cartoon explainer page 1: background and motivation" />
-  <img src="assets/demo/page-07.png" width="49%" alt="Cartoon explainer page 7: algorithm round workflow" />
-</p>
-<p>
-  <img src="assets/demo/page-13.png" width="49%" alt="Cartoon explainer page 13: experiment setup" />
-  <img src="assets/demo/page-18.png" width="49%" alt="Cartoon explainer page 18: final summary" />
+<p align="center">
+  <img src="assets/demo/page-01.png" width="22%" alt="Cartoon explainer page 1: background and motivation" />
+  <img src="assets/demo/page-07.png" width="22%" alt="Cartoon explainer page 7: algorithm round workflow" />
+  <img src="assets/demo/page-13.png" width="22%" alt="Cartoon explainer page 13: experiment setup" />
+  <img src="assets/demo/page-18.png" width="22%" alt="Cartoon explainer page 18: final summary" />
 </p>
 
 - 示例 PDF：[SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - ChatGPT 项目页面导出示例：[SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
 - Skill 包：[paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip)
+- ClawHub 地址：[paper-deep-reading-teaching-explainer](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer)
 
-## 这个 Skill 做什么
+## 它能做什么
 
-它把论文处理成三个层次的交付物：
+- **先精读**：生成证据约束的论文精读报告，覆盖背景、问题、假设、方法、实验、局限和可延伸研究方向。
+- **再讲解**：把论文转成 30 秒、3 分钟、10 分钟都能讲清楚的版本，并准备公式、图表、实验、误解提醒和答辩 Q&A。
+- **再画图**：把报告拆成背景、方法、实验、局限、未来方向等阶段，生成连续卡通漫画页。
+- **最后合成 PDF**：把用户确认后的图片按顺序合成为一份可分享的讲义。
+- **防止跑偏**：生图前检查原文和精读报告，避免编造数据、模块、结论或实验细节。
+- **保持连续**：角色、风格、画幅、对白语言、符号、页面编号、运镜和数据流方向会在后续批次中继承。
 
-1. **论文精读报告**：梳理论文背景、问题、核心假设、方法结构、实验逻辑、局限性和可延伸的研究想法。
-2. **教学讲解材料**：把复杂方法转成 30 秒、3 分钟、10 分钟都能讲清楚的版本，并准备公式讲解、图表讲解、实验讲解、误解提醒和答辩 Q&A。
-3. **卡通漫画讲解 + PDF**：在精读报告完成后，分阶段生成连续漫画页，覆盖背景动机、旧方法缺陷、算法模块、实验结果、局限与答辩、未来方向，最后合成为一份完整 PDF。
-4. **连续分镜一致性**：生成连续多张卡通图时，会要求保持角色、风格、色彩、符号、数据流方向、页面编号和运镜逻辑一致；后续批次会继承前面已生成图片的 storyboard bible。
-5. **生图防幻觉检查**：生图提示和生成结果都要尊重原文和前面的权威精读报告；不支持的事实会删除、标为 `未报告`，或要求用户补充证据。
-6. **多图拆分表达**：不同部分默认拆成多张连续图，一图一个教学重点，不把背景、算法、实验、局限等内容硬塞进一张大图。
-7. **冗余画面剪枝**：多图不是越多越好；生图前会检查每张图的独立教学增量，删掉重复的开场、动机、转场、总结页，尤其第一阶段默认收紧到 3-4 张。
-8. **默认手机竖屏画幅**：卡通图默认使用 `9:16` 手机屏幕比例，更适合移动端浏览；用户也可以改成 `16:9`、`4:5`、`1:1`、`3:4` 或自定义比例。
-9. **默认中文且语言一致**：卡通人物对白、旁白、标题和标签默认使用中文，并在后续批次保持一致；用户也可以改成英文、中英双语或其他语言。
-10. **下一步提示更直接**：不再固定输出下一步 skill 推荐；如果下一步是生图，会明确提醒用户说“生成多张连续的卡通图”；每次文本回复最后都会给出“不知道下一步怎么问”的兜底提示。
-11. **按环境选择生图和 PDF 路径**：ChatGPT 网页版使用 Create image；Codex/coding-agent 优先使用 `imagegen` skill，再回退到 ChatGPT Images 2.0 API 或其他批准的生图 API；状态里会记录运行环境、生图路径、PDF 合成路径、画幅和文本语言。
-12. **首次询问视觉设定**：可选择课堂板书、扁平教育信息图、手绘白板、轻日漫科研课堂、柔和 3D 黏土等风格，也可上传参考图；未指定时默认课堂场景。
+## 主要步骤
 
-## 推荐工作流
-
-```mermaid
-flowchart LR
-  A["上传论文 PDF / LaTeX"] --> B["生成精读报告"]
-  B --> C["给出当前状态和下一步建议"]
-  C --> D["分阶段生成卡通漫画"]
-  D --> E["用户确认或要求修改"]
-  E --> F["合成最终 PDF"]
-```
-
-默认分阶段流程：
-
-| 阶段 | 输出内容 |
+| 阶段 | 产出 |
 | --- | --- |
 | Step 0 | 完整文字精读报告、教学讲解准备、当前状态、下一步提示 |
 | Step 1 | 背景、旧方法缺陷、论文问题、灵感来源 |
-| Step 2 | 算法整体流程与模块解释 |
-| Step 3 | 实验设置、指标、结果、消融和鲁棒性 |
-| Step 4 | 局限性、审稿答辩和防御性解释 |
-| Step 5 | 未来方向和创新图谱 |
+| Step 2 | 算法整体流程、模块输入输出、符号、维度、训练和推理 |
+| Step 3 | 数据集、指标、baseline、主结果、消融、例外和复现风险 |
+| Step 4 | 局限性、审稿质疑、答辩口径和防御性解释 |
+| Step 5 | 未来方向、隐藏假设和创新图谱 |
 | Step 6 | 封面、总结页和 Q&A 备用页 |
-| Step 7 | 将所有确认后的图片合成为 PDF |
+| Step 7 | 将所有确认后的卡通图合成为 PDF |
 
-## 用户体验亮点
+## 推荐使用方法
 
-- **先读懂，再画图**：不会一上来就生成图片，而是先产出完整精读报告，避免漫画只好看但不准确。
-- **分阶段推进**：每次只生成一个阶段，方便用户检查、修改、补充要求。
-- **分镜少而准**：生图前会剪掉重复画面，让最终 PDF 更像清晰讲义，而不是一串相似的铺垫页。
-- **手机阅读优先**：默认 9:16 竖屏生成，适合手机翻看；需要投影或横版讲义时可切到 16:9。
-- **对白语言稳定**：默认中文对白/旁白，避免同一套漫画里中英文随机混用；用户需要时可切换语言。
-- **会主动告诉用户下一步怎么问**：每个阶段都会给出当前状态、推荐下一步和可直接复制的用户输入。
-- **适合上下文丢失后的恢复**：如果换了新会话，可以用固定句式继续，例如：`使用这个skill，根据状态，执行第2步：生成算法整体流程与各模块解释的连续卡通图。`
-- **支持“不知道下一步问什么”**：用户可以直接说：`使用这个skill，根据状态，告知下一步应该问什么。`
-- **面向教学和答辩**：不仅总结论文，还会准备讲稿、误解防护、角色扮演讨论、答辩问题库和展示结构。
-- **最终交付友好**：漫画页可以合成 PDF，用于组会、课堂、读书会、论文分享或复习材料。
+### ChatGPT 网页版 / App
+
+强烈建议在 ChatGPT 网页版 / App 的 Project 中使用。卡通图阶段最适合直接使用 ChatGPT 的 **Create image** 能力。
+
+1. 打开 [ClawHub 页面](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer)，下载 skill zip。
+2. 在 ChatGPT 网页版中新建或打开一个 Project。
+3. 先把 skill 放进 Project 的 `Sources`，建议上传 skill zip。
+4. 确认 skill 已在 `Sources` 后，再上传论文 PDF / LaTeX。
+5. 先让 skill 生成完整文字精读报告，不要第一步就生图。
+6. 按状态提示逐阶段生成卡通图。下一步要生图时，明确说：`生成多张连续的卡通图`。
+7. 所有图片确认后，执行最终 PDF 合成。
+
+可直接使用的提示词：
+
+```text
+使用这个skill，精读这篇论文，先生成完整文字报告，不要生成图片。
+```
+
+```text
+使用这个skill，根据状态，执行第1步：生成多张连续的卡通图，内容是背景、旧方法缺陷、论文问题和灵感来源。
+```
+
+```text
+使用这个skill，根据状态，执行最后一步：把所有已经生成并确认的图合成一个PDF。
+```
+
+如果不知道下一步怎么问：
+
+```text
+使用这个skill，根据状态，告知下一步应该问什么。
+```
+
+### Codex / coding-agent
+
+Codex、Claude Code 或其他 coding-agent 环境也可以使用，但完整卡通生图流程通常更适合在 ChatGPT 网页版完成。
+
+- 生图时优先使用 `imagegen` skill。
+- `imagegen` 不可用或能力不足时，再使用 ChatGPT Images 2.0 API 或其他用户批准的生图 API。
+- Codex 更适合整理文件、检查 README、更新 skill、打包 zip、合成 PDF 和提交 GitHub。
+- PDF 合成脚本默认使用 `1080x1920` 的 9:16 手机竖屏画幅，也可通过 `--page-width` / `--page-height` 修改。
+
+## 默认设置
+
+- **画幅**：默认 `9:16` 手机竖屏，可改为 `16:9`、`4:5`、`1:1`、`3:4` 或自定义比例。
+- **语言**：默认中文对白、旁白、标题和标签；可改为英文、中英双语或其他语言。
+- **风格**：默认课堂板书漫画，也可选扁平教育信息图、手绘白板草图、轻日漫科研课堂、柔和 3D 黏土/立体卡通。
+- **人物设定**：默认课堂场景，一个老师/讲解者加 2-3 个学生或研究者听众。
+- **图片数量**：多图不是越多越好。每张图必须有独立教学增量，重复的开场、动机、转场或总结页会被剪掉。
 
 ## 适合谁用
 
@@ -113,38 +108,11 @@ flowchart LR
 - 想把抽象算法、实验和局限性转成直观视觉材料的讲解者。
 - 需要从论文中挖掘后续研究想法的人。
 
-## 快速开始
+## OpenClaw / ClawHub CLI
 
-1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip`。
-2. 推荐在 ChatGPT 网页版 Project 中使用，并先把 skill 放入 Project `Sources`。
-3. 然后上传论文 PDF、LaTeX 源码，或同时提供两者。
-4. 先让 skill 生成完整文字精读报告。
-5. 根据它给出的下一步提示，逐阶段生成卡通图。
-6. 所有图片确认后，执行最终 PDF 合成。
-
-可用提示示例：
-
-```text
-使用这个skill，精读这篇论文，先生成完整文字报告，不要生成图片。
+```bash
+openclaw skills install paper-deep-reading-teaching-explainer
 ```
-
-```text
-使用这个skill，根据状态，执行第1步：生成背景、旧方法缺陷、论文问题和灵感来源的连续卡通图。
-```
-
-```text
-使用这个skill，根据状态，执行最后一步：把所有已经生成并确认的图合成一个PDF。
-```
-
-## 示例成果
-
-当前仓库中的 `example` 文件夹包含一次完整样例：
-
-- 18 张卡通讲解图片；
-- 由 18 张图片合成的 PDF；
-- ChatGPT 项目聊天页面导出的 mhtml，展示了实际使用过程和结果。
-
-这些示例可以帮助新用户快速理解：这个 skill 的重点不是一次性生成漂亮插图，而是把论文精读、教学讲解、分阶段视觉化和最终材料打包成一条完整工作流。
 
 ## License
 
