@@ -33,6 +33,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 - **Not a single image**: the default output is not one large poster or merged long image; a single image is only an explicitly requested compact overview.
 - **Small batches**: one page teaches one point, and complex sections can be generated across multiple replies with only a few pages each time.
 - **Focal visual argument**: each page is organized around one central diagram or scene, with a few supporting callouts serving the same conclusion, instead of a multi-topic checklist poster.
+- **Configurable composition**: the default is focal visual argument, but users can switch to process strip, split-screen comparison, defense Q&A card, minimal concept card, or reference-guided layout.
 - **Assembles the PDF**: places approved cartoon pages first, renders the Markdown deep-reading report after them, and combines both into one shareable handout.
 - **Checks hallucinations**: prompts and generated images are checked against the original paper and the prior authoritative report.
 - **Keeps continuity**: character design, style, aspect ratio, dialogue language, symbols, page numbering, camera logic, and data-flow direction carry across later batches.
@@ -101,6 +102,7 @@ Codex, Claude Code, and other coding-agent environments can use the skill. Full 
 - **Batch size**: default 2-4 images per generation reply to avoid overloaded pages; complex sections continue in later batches.
 - **Image count**: more images is not automatically better. Each image needs a distinct teaching contribution, and redundant opening, motivation, transition, or recap pages are pruned.
 - **Page structure**: recommended structure is page marker/title -> one framing question or claim -> central diagram/scene -> 2-5 supporting callouts -> bottom takeaway/evidence note.
+- **Composition mode**: the first reply states the default and offers switches to process strip, split-screen comparison, defense Q&A card, minimal concept card, or reference-guided layout.
 
 ## Who It Is For
 
