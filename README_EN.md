@@ -50,7 +50,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: [paper-deep-reading-teaching-explainer-v10.1.11-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.11-clawhub.zip)
+- Skill package: [paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip)
 
 ## What It Does
 
@@ -64,9 +64,10 @@ The skill creates three layers of output:
 6. **Multi-image decomposition**: different visual parts are split into multiple continuous images by default, with one teaching point per image instead of forcing background, method, experiments, and limitations into one crowded graphic.
 7. **Redundancy pruning**: more images is not automatically better; before image generation, the skill checks each image's unique teaching contribution and removes repeated opening, motivation, transition, and recap pages, especially in Step 1.
 8. **Phone-first aspect ratio**: storyboard images default to `9:16` phone portrait for mobile reading; users can switch to `16:9`, `4:5`, `1:1`, `3:4`, or a custom ratio.
-9. **Clearer next-step prompts**: the skill no longer requires a fixed next-skill recommendation footer; when the next step is image generation, it explicitly tells users to ask for `生成多张连续的卡通图`.
-10. **Runtime-aware image and PDF routing**: ChatGPT Web/App uses Create image; Codex/coding-agent environments prefer the `imagegen` skill, then ChatGPT Images 2.0 API, then another approved image API. Status replies record runtime, image route, PDF route, and aspect ratio.
-11. **First-turn visual setup**: users can choose a cartoon style, upload reference images, and set scene/characters/roles; without preference, the default is a classroom teaching scene.
+9. **Chinese by default, language-consistent**: character dialogue, narrator captions, titles, and labels default to Chinese and remain consistent across later batches; users can switch to English, bilingual Chinese-English, or another language.
+10. **Clearer next-step prompts**: the skill no longer requires a fixed next-skill recommendation footer; when the next step is image generation, it explicitly tells users to ask for `生成多张连续的卡通图`; every text reply ends with a fallback prompt for users who do not know what to ask next.
+11. **Runtime-aware image and PDF routing**: ChatGPT Web/App uses Create image; Codex/coding-agent environments prefer the `imagegen` skill, then ChatGPT Images 2.0 API, then another approved image API. Status replies record runtime, image route, PDF route, aspect ratio, and text language.
+12. **First-turn visual setup**: users can choose a cartoon style, upload reference images, and set scene/characters/roles; without preference, the default is a classroom teaching scene.
 
 ## Workflow
 
@@ -98,6 +99,7 @@ Default stages:
 - **Staged visual generation**: one visual stage at a time, so users can review, revise, and keep control.
 - **Concise storyboard planning**: the skill prunes redundant images before generation, so the final PDF stays readable instead of repeating similar setup pages.
 - **Mobile reading first**: the default is 9:16 portrait, with 16:9 and other ratios available when the user needs slides or another format.
+- **Stable dialogue language**: cartoon dialogue and narrator text default to Chinese and avoid random language mixing; users can change the language when needed.
 - **Built-in next-step guidance**: each stage can tell the user what to ask next and provide copy-ready prompts.
 - **Continuity-aware image prompts**: prompt batches include image order, camera/framing, transition logic, style bible, symbol bible, and consistency with earlier images.
 - **Session recovery friendly**: if context is lost, users can continue with prompts such as: `使用这个skill，根据状态，执行第2步：生成算法整体流程与各模块解释的连续卡通图。`
@@ -114,7 +116,7 @@ Default stages:
 
 ## Quick Start
 
-1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.11-clawhub.zip` from this repository.
+1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip` from this repository.
 2. Prefer ChatGPT Web/App Projects, and add the skill to Project `Sources` first.
 3. Then upload a paper PDF, LaTeX source, or both.
 4. Ask the skill to generate the full text-only deep reading report first.
