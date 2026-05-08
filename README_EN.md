@@ -29,7 +29,8 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - **Reads first**: produces an evidence-grounded report covering motivation, problem setting, assumptions, method, experiments, limitations, and research opportunities.
 - **Explains next**: prepares 30-second, 3-minute, and 10-minute explanations, plus formula, figure, table, experiment, misconception, and defense scripts.
-- **Draws in stages**: generates continuous cartoon pages for background, method, experiments, limitations, future directions, and presentation packaging.
+- **Draws in stages**: generates a continuous cartoon comic made of multiple separate pages for background, method, experiments, limitations, future directions, and presentation packaging.
+- **Not a single image**: the default output is not one large poster or merged long image; a single image is only an explicitly requested compact overview.
 - **Assembles the PDF**: combines approved images into one shareable handout.
 - **Checks hallucinations**: prompts and generated images are checked against the original paper and the prior authoritative report.
 - **Keeps continuity**: character design, style, aspect ratio, dialogue language, symbols, page numbering, camera logic, and data-flow direction carry across later batches.
