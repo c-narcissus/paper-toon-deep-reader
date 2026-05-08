@@ -50,7 +50,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: [paper-deep-reading-teaching-explainer-v10.1.8-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.8-clawhub.zip)
+- Skill package: [paper-deep-reading-teaching-explainer-v10.1.9-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.9-clawhub.zip)
 
 ## What It Does
 
@@ -63,6 +63,8 @@ The skill creates three layers of output:
 5. **Image anti-hallucination checks**: image prompts and generated results must respect the original paper and the prior authoritative deep-reading report; unsupported facts are removed, marked `not reported`, or sent back for evidence.
 6. **Multi-image decomposition**: different visual parts are split into multiple continuous images by default, with one teaching point per image instead of forcing background, method, experiments, and limitations into one crowded graphic.
 7. **Clearer next-step prompts**: the skill no longer requires a fixed next-skill recommendation footer; when the next step is image generation, it explicitly tells users to ask for `生成多张连续的卡通图`.
+8. **Runtime-aware image and PDF routing**: ChatGPT Web/App uses Create image; Codex/coding-agent environments prefer the `imagegen` skill, then ChatGPT Images 2.0 API, then another approved image API. Status replies record runtime, image route, and PDF route.
+9. **First-turn visual setup**: users can choose a cartoon style, upload reference images, and set scene/characters/roles; without preference, the default is a classroom teaching scene.
 
 ## Workflow
 
@@ -108,7 +110,7 @@ Default stages:
 
 ## Quick Start
 
-1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.8-clawhub.zip` from this repository.
+1. Download the skill from ClawHub, or use `paper-deep-reading-teaching-explainer-v10.1.9-clawhub.zip` from this repository.
 2. Prefer ChatGPT Web/App Projects, and add the skill to Project `Sources` first.
 3. Then upload a paper PDF, LaTeX source, or both.
 4. Ask the skill to generate the full text-only deep reading report first.

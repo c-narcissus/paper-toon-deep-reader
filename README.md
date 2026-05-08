@@ -50,7 +50,7 @@ openclaw skills install paper-deep-reading-teaching-explainer
 
 - 示例 PDF：[SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - ChatGPT 项目页面导出示例：[SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill 包：[paper-deep-reading-teaching-explainer-v10.1.8-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.8-clawhub.zip)
+- Skill 包：[paper-deep-reading-teaching-explainer-v10.1.9-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.9-clawhub.zip)
 
 ## 这个 Skill 做什么
 
@@ -63,6 +63,8 @@ openclaw skills install paper-deep-reading-teaching-explainer
 5. **生图防幻觉检查**：生图提示和生成结果都要尊重原文和前面的权威精读报告；不支持的事实会删除、标为 `未报告`，或要求用户补充证据。
 6. **多图拆分表达**：不同部分默认拆成多张连续图，一图一个教学重点，不把背景、算法、实验、局限等内容硬塞进一张大图。
 7. **下一步提示更直接**：不再固定输出下一步 skill 推荐；如果下一步是生图，会明确提醒用户说“生成多张连续的卡通图”。
+8. **按环境选择生图和 PDF 路径**：ChatGPT 网页版使用 Create image；Codex/coding-agent 优先使用 `imagegen` skill，再回退到 ChatGPT Images 2.0 API 或其他批准的生图 API；状态里会记录运行环境、生图路径和 PDF 合成路径。
+9. **首次询问视觉设定**：可选择课堂板书、扁平教育信息图、手绘白板、轻日漫科研课堂、柔和 3D 黏土等风格，也可上传参考图；未指定时默认课堂场景。
 
 ## 推荐工作流
 
@@ -107,7 +109,7 @@ flowchart LR
 
 ## 快速开始
 
-1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.8-clawhub.zip`。
+1. 从 ClawHub 下载 skill，或使用本仓库中的 `paper-deep-reading-teaching-explainer-v10.1.9-clawhub.zip`。
 2. 推荐在 ChatGPT 网页版 Project 中使用，并先把 skill 放入 Project `Sources`。
 3. 然后上传论文 PDF、LaTeX 源码，或同时提供两者。
 4. 先让 skill 生成完整文字精读报告。
