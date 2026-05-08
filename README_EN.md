@@ -4,7 +4,7 @@
 
 [中文 README](README.md)
 
-This skill is built for seminars, classes, reproduction prep, and defense rehearsal. It first creates a source-grounded deep reading report from a paper PDF and/or LaTeX source, then turns the report into staged cartoon explainers for background, method, experiments, limitations, and future directions, and finally assembles approved images into a PDF. It defaults to phone portrait, Chinese dialogue, and consistent storyboard style, while allowing custom aspect ratio, language, and cartoon style.
+This skill is built for seminars, classes, reproduction prep, and defense rehearsal. It first creates a source-grounded Markdown deep reading report from a paper PDF and/or LaTeX source, then turns the report into staged cartoon explainers for background, method, experiments, limitations, and future directions, and finally assembles approved cartoon pages and the Markdown report into one PDF, with cartoon pages first and the report after them. It defaults to phone portrait, Chinese dialogue, and consistent storyboard style, while allowing custom aspect ratio, language, and cartoon style.
 
 ## Demo
 
@@ -31,7 +31,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 - **Explains next**: prepares 30-second, 3-minute, and 10-minute explanations, plus formula, figure, table, experiment, misconception, and defense scripts.
 - **Draws in stages**: generates a continuous cartoon comic made of multiple separate pages for background, method, experiments, limitations, future directions, and presentation packaging.
 - **Not a single image**: the default output is not one large poster or merged long image; a single image is only an explicitly requested compact overview.
-- **Assembles the PDF**: combines approved images into one shareable handout.
+- **Assembles the PDF**: places approved cartoon pages first, renders the Markdown deep-reading report after them, and combines both into one shareable handout.
 - **Checks hallucinations**: prompts and generated images are checked against the original paper and the prior authoritative report.
 - **Keeps continuity**: character design, style, aspect ratio, dialogue language, symbols, page numbering, camera logic, and data-flow direction carry across later batches.
 
@@ -46,7 +46,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 | Step 4 | Limitations, reviewer questions, defense framing |
 | Step 5 | Future directions, hidden assumptions, innovation map |
 | Step 6 | Cover, final summary, Q&A backup pages |
-| Step 7 | Final PDF assembly from approved cartoon pages |
+| Step 7 | Final PDF assembly from approved cartoon pages plus the Markdown report, with cartoons first |
 
 ## Usage
 
@@ -59,7 +59,7 @@ The skill works in both ChatGPT Web/App and Codex / coding-agent environments. I
 3. After the skill is present in `Sources`, upload the paper PDF and/or LaTeX source.
 4. Ask for the full text-only deep reading report first. Do not generate images in the first step.
 5. Generate cartoon pages stage by stage. When the next step is image generation, explicitly ask for `生成多张连续的卡通图`.
-6. After approving all images, run the final PDF assembly step.
+6. After approving all images, run the final PDF assembly step: cartoon pages first, Markdown deep-reading report after them.
 
 Copy-ready prompts:
 
@@ -72,7 +72,7 @@ Copy-ready prompts:
 ```
 
 ```text
-严格遵守skill里的步骤：根据状态，执行最后一步：把所有已经生成并确认的图合成一个PDF。
+严格遵守skill里的步骤：根据状态，执行最后一步：把所有已经生成并确认的卡通图和Markdown精读报告合成一个PDF，卡通图在前面。
 ```
 
 If you do not know what to ask next:
@@ -88,7 +88,7 @@ Codex, Claude Code, and other coding-agent environments can use the skill. Full 
 - Prefer the `imagegen` skill for cartoon image generation.
 - If `imagegen` is unavailable or insufficient, fall back to ChatGPT Images 2.0 API or another user-approved image-generation API.
 - Codex is useful for local file organization, README checks, skill updates, zip packaging, PDF assembly, and GitHub publishing.
-- The PDF assembly script defaults to `1080x1920` for 9:16 phone portrait and can be changed with `--page-width` / `--page-height`.
+- The combined PDF script defaults to `1080x1920` for 9:16 phone portrait. Use `scripts/assemble_storyboard_report_pdf.py`; image/report page-size parameters can override the defaults.
 
 ## Defaults
 
