@@ -1,115 +1,118 @@
 # Paper Toon Deep Reader
 
-**One line: turn a paper into a teachable, defensible, phone-readable cartoon deep-reading PDF.**
+`paper-toon-deep-reader` first generates a traceable deep-reading report from a paper, then creates multiple continuous cartoon-comic pages in stages, and finally assembles the approved cartoon pages and Markdown report into one PDF. Special thanks to Liu Xinyang from Bristol for providing the SemiDFL example materials.
 
 [中文 README](README.md)
 
-This skill is built for seminars, classes, reproduction prep, and defense rehearsal. It first creates a source-grounded Markdown deep reading report from a paper PDF and/or LaTeX source, then turns the report into staged cartoon explainers for background, method, experiments, limitations, and future directions, and finally assembles approved cartoon pages and the Markdown report into one PDF, with cartoon pages first and the report after them. It defaults to phone portrait, Chinese dialogue, and consistent storyboard style, while allowing custom aspect ratio, language, and cartoon style.
+Thumbnail preview of the 12 cartoon deep-reading pages:
 
-## Demo
+| S1 | S2 | S3 | S4 |
+| --- | --- | --- | --- |
+| <img src="example/S1.png" width="160" alt="SemiDFL cartoon report page S1" /> | <img src="example/S2.png" width="160" alt="SemiDFL cartoon report page S2" /> | <img src="example/S3.png" width="160" alt="SemiDFL cartoon report page S3" /> | <img src="example/S4.png" width="160" alt="SemiDFL cartoon report page S4" /> |
 
-The example below comes from a complete `SemiDFL` run: a deep reading report first, then 18 staged cartoon explainer pages, then one combined PDF. This sample is an earlier 16:9 landscape run; the current version defaults to 9:16 phone portrait, while 16:9 remains available.
+| S5 | S6 | S7 | S8 |
+| --- | --- | --- | --- |
+| <img src="example/S5.png" width="160" alt="SemiDFL cartoon report page S5" /> | <img src="example/S6.png" width="160" alt="SemiDFL cartoon report page S6" /> | <img src="example/S7.png" width="160" alt="SemiDFL cartoon report page S7" /> | <img src="example/S8.png" width="160" alt="SemiDFL cartoon report page S8" /> |
 
-<div align="center">
-  <img src="assets/demo/storyboard-pages-01-18-contact-sheet.jpg" width="680" alt="18-page cartoon storyboard overview" />
-</div>
+| S9 | S10 | S11 | S12 |
+| --- | --- | --- | --- |
+| <img src="example/S9.png" width="160" alt="SemiDFL cartoon report page S9" /> | <img src="example/S10.png" width="160" alt="SemiDFL cartoon report page S10" /> | <img src="example/S11.png" width="160" alt="SemiDFL cartoon report page S11" /> | <img src="example/S12.png" width="160" alt="SemiDFL cartoon report page S12" /> |
 
-<p align="center">
-  <img src="assets/demo/page-01.png" width="22%" alt="Cartoon explainer page 1: background and motivation" />
-  <img src="assets/demo/page-07.png" width="22%" alt="Cartoon explainer page 7: algorithm round workflow" />
-  <img src="assets/demo/page-13.png" width="22%" alt="Cartoon explainer page 13: experiment setup" />
-  <img src="assets/demo/page-18.png" width="22%" alt="Cartoon explainer page 18: final summary" />
-</p>
+## Key Rules
 
-- Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
-- Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: use the latest zip file in the repository root.
+- **Strict stage gates**: report, cartoon images, and PDF assembly are separate stages. Even if the user asks for everything at once, the workflow must stop at the next valid gate and wait for confirmation.
+- **Separate text and image turns**: do not generate direct images in the same reply that writes a report, prompt handoff, checklist, or long status.
+- **Multiple continuous comic pages**: the default output is a sequence of separate cartoon pages, not one SVG, poster, long image, or merged collage.
+- **ChatGPT Web uses Create image**: every direct cartoon batch in ChatGPT Web/App must use Create image.
+- **Codex uses imagegen first**: in Codex / coding-agent environments, use `imagegen` first; if unavailable, use ChatGPT Images 2.0 API or another user-approved image API.
+- **No SVG substitutes**: SVG, Mermaid, HTML/CSS, canvas, and hand-drawn vector diagrams are not valid cartoon-image outputs for this skill.
+- **Small batches**: normally generate 2-4 pages per batch and continue complex sections across multiple user-approved turns.
+- **One teaching point per page**: avoid stuffing multiple formulas, modules, tables, and conclusions into one page.
+- **Source-grounded visuals**: prompts and generated images must be checked against the original paper and the authoritative report.
+- **PDF last**: assemble the final PDF only after all raster cartoon pages are generated and approved.
 
-## What It Does
+## Example Files
 
-- **Reads first**: produces an evidence-grounded report covering motivation, problem setting, assumptions, method, experiments, limitations, and research opportunities.
-- **Explains next**: prepares 30-second, 3-minute, and 10-minute explanations, plus formula, figure, table, experiment, misconception, and defense scripts.
-- **Draws in stages**: generates a continuous cartoon comic made of multiple separate pages for background, method, experiments, limitations, future directions, and presentation packaging.
-- **Not a single image**: the default output is not one large poster or merged long image; a single image is only an explicitly requested compact overview.
-- **Small batches**: one page teaches one point, and complex sections can be generated across multiple replies with only a few pages each time.
-- **Focal visual argument**: each page is organized around one central diagram or scene, with a few supporting callouts serving the same conclusion, instead of a multi-topic checklist poster.
-- **Configurable composition**: the default is focal visual argument, but users can switch to process strip, split-screen comparison, defense Q&A card, minimal concept card, or reference-guided layout.
-- **Assembles the PDF**: places approved cartoon pages first, renders the Markdown deep-reading report after them, and combines both into one shareable handout.
-- **Checks hallucinations**: prompts and generated images are checked against the original paper and the prior authoritative report.
-- **Keeps continuity**: character design, style, aspect ratio, dialogue language, symbols, page numbering, camera logic, and data-flow direction carry across later batches.
+The repository includes a SemiDFL example showing both the ChatGPT Web interaction and the final outputs:
 
-## Main Steps
+- `example/S1.png` to `example/S12.png`: 12 generated cartoon pages from the deep-reading report, showing how the paper background, method, experiments, limitations, and summary can be split into a continuous comic sequence.
+- [`example/semiDFL.pdf`](example/semiDFL.pdf): the original paper PDF used in the example, provided so users can directly upload it to a ChatGPT Project or place it in a Codex project directory for testing.
+- [`example/SemiDFL精读卡通图报告.mhtml`](example/SemiDFL%E7%B2%BE%E8%AF%BB%E5%8D%A1%E9%80%9A%E5%9B%BE%E6%8A%A5%E5%91%8A.mhtml): exported ChatGPT Web conversation example. It records the interaction flow from skill configuration and deep-reading report generation to staged cartoon-image generation and PDF preparation.
+- [`example/semiDFL_codex_v.mp4`](example/semiDFL_codex_v.mp4): a partial clip of running this skill in Codex, useful as a reference for local Codex execution.
+
+The current version defaults to 9:16 phone portrait, while 16:9, 4:5, 1:1, 3:4, and custom ratios remain available.
+
+## Workflow
 
 | Stage | Output |
 | --- | --- |
-| Step 0 | Full text report, teaching prep, current status, next-step prompts |
+| Step 0 | Full text report, teaching prep, current status, next-step suggestions |
 | Step 1 | Background, old-method defects, paper problem, inspiration |
 | Step 2 | Algorithm overview, module IO, symbols, dimensions, training, inference |
 | Step 3 | Datasets, metrics, baselines, main results, ablations, exceptions, reproduction risks |
 | Step 4 | Limitations, reviewer questions, defense framing |
 | Step 5 | Future directions, hidden assumptions, innovation map |
 | Step 6 | Cover, final summary, Q&A backup pages |
-| Step 7 | Final PDF assembly from approved cartoon pages plus the Markdown report, with cartoons first |
+| Step 7 | Final PDF from approved cartoon pages plus the Markdown report, with cartoons first |
 
-## Usage
+## Recommended Use
 
-The skill works in both ChatGPT Web/App and Codex / coding-agent environments. If you want to save tokens, prefer completing the full reading, image-generation, and PDF workflow in a ChatGPT Web Project; Codex is better for local file organization, script execution, packaging, and GitHub publishing.
+If your token budget is sufficient, Codex is recommended.
 
-### ChatGPT Web/App
+ChatGPT Web/App and Codex / coding-agent environments follow nearly the same workflow: configure the skill and paper files, generate the text report first, generate multiple continuous cartoon pages in small batches, review each batch, then assemble the final PDF after approval.
 
-1. Create or open a Project in ChatGPT Web/App.
-2. Add the repository skill zip to Project `Sources` first.
-3. After the skill is present in `Sources`, upload the paper PDF and/or LaTeX source.
-4. Ask for the full text-only deep reading report first. Do not generate images in the first step.
-5. Generate cartoon pages stage by stage in small batches. When the next step is image generation, explicitly ask for `生成多张连续的卡通图`; for complex sections, continue with `继续生成下一批多张连续的卡通图`.
-6. After approving all images, run the final PDF assembly step: cartoon pages first, Markdown deep-reading report after them.
+If the goal is to save tokens and complete the full visual workflow quickly, ChatGPT Web/App is usually the better environment. Codex is better for local file organization, script execution, README editing, skill updates, zip packaging, PDF assembly, and GitHub publishing.
 
-Copy-ready prompts:
+## ChatGPT Web/App Usage
 
-```text
-严格遵守skill里的步骤：精读这篇论文，先生成完整文字报告，不要生成图片。
-```
+1. Create or open a ChatGPT Project.
+2. Add `paper-toon-deep-reader-v2.0.0.zip` to Project `Sources` first.
+3. Add the paper PDF / LaTeX source to `Sources`, for example `semiDFL.pdf`.
+4. Send the first-use prompt so ChatGPT configures the skill for the current conversation.
+5. The first execution should only produce the text report and status. It should not generate images or assemble a PDF.
+6. When the status reaches the cartoon stage, use Create image and explicitly ask for multiple continuous cartoon pages.
+7. Review each generated batch before continuing. Assemble the PDF only after all pages are approved.
 
-```text
-严格遵守skill里的步骤：根据状态，执行第1步：生成多张连续的卡通图，内容是背景、旧方法缺陷、论文问题和灵感来源。
-```
+First-use prompt example:
 
 ```text
-严格遵守skill里的步骤：根据状态，执行最后一步：把所有已经生成并确认的卡通图和Markdown精读报告合成一个PDF，卡通图在前面。
+请严格按照paper-toon-deep-reader-v2.0.0.zip里skill 的步骤对semiDFL.pdf进行分析
 ```
 
-If you do not know what to ask next:
+## Codex Usage
+
+The Codex environment can use the same workflow. Put `paper-toon-deep-reader-v2.0.0.zip` and the paper file in the same project directory, or specify the file path clearly in the prompt.
+
+Codex first-use prompt example:
 
 ```text
-严格遵守skill里的步骤：根据状态，告知下一步应该问什么。
+请为一个 agent 配置 paper-toon-deep-reader-v2.0.0.zip 里的 skill，然后严格按照里面的步骤对 semiDFL.pdf 进行分析。
 ```
-
-### Codex / Coding Agents
-
-Codex, Claude Code, and other coding-agent environments can use the skill. Full long-running local-agent workflows usually consume more tokens; if the main goal is to save tokens and quickly get cartoon pages, prefer ChatGPT Web/App.
-
-- Prefer the `imagegen` skill for cartoon image generation.
-- If `imagegen` is unavailable or insufficient, fall back to ChatGPT Images 2.0 API or another user-approved image-generation API.
-- Codex is useful for local file organization, README checks, skill updates, zip packaging, PDF assembly, and GitHub publishing.
-- The combined PDF script defaults to `1080x1920` for 9:16 phone portrait. Use `scripts/assemble_storyboard_report_pdf.py`; image/report page-size parameters can override the defaults.
 
 ## Defaults
 
-- **Aspect ratio**: default `9:16` phone portrait; users can switch to `16:9`, `4:5`, `1:1`, `3:4`, or a custom ratio.
-- **Language**: default Chinese dialogue, narrator captions, titles, and labels; users can switch to English, bilingual Chinese-English, or another language.
+- **Aspect ratio**: default `9:16` phone portrait; users can switch to `16:9`, `4:5`, `1:1`, `3:4`, or custom.
+- **Language**: default Chinese dialogue, captions, titles, and labels; users can switch to English, bilingual Chinese-English, or another language.
 - **Style**: default classroom blackboard cartoon; alternatives include flat educational infographic, hand-drawn whiteboard sketch, light anime research classroom, and soft 3D clay/cartoon.
 - **Characters**: default classroom scene with one teacher/narrator and 2-3 student or researcher listeners.
-- **Batch size**: default 2-4 images per generation reply to avoid overloaded pages; complex sections continue in later batches.
-- **Image count**: more images is not automatically better. Each image needs a distinct teaching contribution, and redundant opening, motivation, transition, or recap pages are pruned.
-- **Page structure**: recommended structure is page marker/title -> one framing question or claim -> central diagram/scene -> 2-5 supporting callouts -> bottom takeaway/evidence note.
-- **Composition mode**: the first reply states the default and offers switches to process strip, split-screen comparison, defense Q&A card, minimal concept card, or reference-guided layout.
+- **Batch size**: default 2-4 pages per generation reply.
+- **Page structure**: page marker/title -> framing question or claim -> central diagram/scene -> 2-5 supporting callouts -> bottom takeaway/evidence note.
+- **Composition mode**: default single focal visual argument; users can switch to process strip, split-screen comparison, defense Q&A card, minimal concept card, or reference-guided layout.
 
-## Who It Is For
+## Interaction State
 
-- Graduate students, researchers, and research engineers who need to explain papers clearly.
-- Users preparing seminars, course presentations, reproduction reports, or defense materials.
-- Teachers and presenters who want to turn dense algorithms and experiments into visual narratives.
-- Researchers who want to extract future research ideas from papers.
+Every text reply should include:
+
+- Current stage and produced artifacts.
+- Runtime Environment.
+- Image Generation Route.
+- PDF Assembly Route.
+- Storyboard Aspect Ratio.
+- Storyboard Text Language.
+- Storyboard Page Composition.
+- Suggested next user prompt.
+
+This helps prevent state repetition, skipped stages, SVG fallback, one-shot PDF generation, and mixing text report generation with cartoon-image generation.
 
 ## License
 
