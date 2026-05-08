@@ -4,8 +4,6 @@
 
 [中文 README](README.md)
 
-## 100-Word Summary
-
 This skill is built for seminars, classes, reproduction prep, and defense rehearsal. It first creates a source-grounded deep reading report from a paper PDF and/or LaTeX source, then turns the report into staged cartoon explainers for background, method, experiments, limitations, and future directions, and finally assembles approved images into a PDF. It defaults to phone portrait, Chinese dialogue, and consistent storyboard style, while allowing custom aspect ratio, language, and cartoon style.
 
 ## Demo
@@ -25,8 +23,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 
 - Example PDF: [SemiDFL_cartoon_explainer_pages_1-18.pdf](example/SemiDFL_cartoon_explainer_pages_1-18.pdf)
 - Exported ChatGPT project example: [SemiDFL deep reading report .mhtml](example/SemiDFL%20deep%20reading%20report%20.mhtml)
-- Skill package: [paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip](paper-deep-reading-teaching-explainer-v10.1.12-clawhub.zip)
-- ClawHub page: [paper-deep-reading-teaching-explainer](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer)
+- Skill package: use the latest zip file in the repository root.
 
 ## What It Does
 
@@ -50,43 +47,42 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 | Step 6 | Cover, final summary, Q&A backup pages |
 | Step 7 | Final PDF assembly from approved cartoon pages |
 
-## Recommended Use
+## Usage
+
+The skill works in both ChatGPT Web/App and Codex / coding-agent environments. If you want to save tokens, prefer completing the full reading, image-generation, and PDF workflow in a ChatGPT Web Project; Codex is better for local file organization, script execution, packaging, and GitHub publishing.
 
 ### ChatGPT Web/App
 
-The recommended environment is a ChatGPT Web/App Project. The cartoon stage works best with ChatGPT's **Create image** capability.
-
-1. Open the [ClawHub page](https://clawhub.ai/c-narcissus/paper-deep-reading-teaching-explainer) and download the skill zip.
-2. Create or open a Project in ChatGPT Web/App.
-3. Add the skill to Project `Sources` first. Uploading the skill zip is recommended.
-4. After the skill is present in `Sources`, upload the paper PDF and/or LaTeX source.
-5. Ask for the full text-only deep reading report first. Do not generate images in the first step.
-6. Generate cartoon pages stage by stage. When the next step is image generation, explicitly ask for `生成多张连续的卡通图`.
-7. After approving all images, run the final PDF assembly step.
+1. Create or open a Project in ChatGPT Web/App.
+2. Add the repository skill zip to Project `Sources` first.
+3. After the skill is present in `Sources`, upload the paper PDF and/or LaTeX source.
+4. Ask for the full text-only deep reading report first. Do not generate images in the first step.
+5. Generate cartoon pages stage by stage. When the next step is image generation, explicitly ask for `生成多张连续的卡通图`.
+6. After approving all images, run the final PDF assembly step.
 
 Copy-ready prompts:
 
 ```text
-使用这个skill，精读这篇论文，先生成完整文字报告，不要生成图片。
+严格遵守skill里的步骤：精读这篇论文，先生成完整文字报告，不要生成图片。
 ```
 
 ```text
-使用这个skill，根据状态，执行第1步：生成多张连续的卡通图，内容是背景、旧方法缺陷、论文问题和灵感来源。
+严格遵守skill里的步骤：根据状态，执行第1步：生成多张连续的卡通图，内容是背景、旧方法缺陷、论文问题和灵感来源。
 ```
 
 ```text
-使用这个skill，根据状态，执行最后一步：把所有已经生成并确认的图合成一个PDF。
+严格遵守skill里的步骤：根据状态，执行最后一步：把所有已经生成并确认的图合成一个PDF。
 ```
 
 If you do not know what to ask next:
 
 ```text
-使用这个skill，根据状态，告知下一步应该问什么。
+严格遵守skill里的步骤：根据状态，告知下一步应该问什么。
 ```
 
 ### Codex / Coding Agents
 
-Codex, Claude Code, and other coding-agent environments can use the skill, but the full cartoon-generation workflow is usually smoother in ChatGPT Web/App.
+Codex, Claude Code, and other coding-agent environments can use the skill. Full long-running local-agent workflows usually consume more tokens; if the main goal is to save tokens and quickly get cartoon pages, prefer ChatGPT Web/App.
 
 - Prefer the `imagegen` skill for cartoon image generation.
 - If `imagegen` is unavailable or insufficient, fall back to ChatGPT Images 2.0 API or another user-approved image-generation API.
@@ -107,12 +103,6 @@ Codex, Claude Code, and other coding-agent environments can use the skill, but t
 - Users preparing seminars, course presentations, reproduction reports, or defense materials.
 - Teachers and presenters who want to turn dense algorithms and experiments into visual narratives.
 - Researchers who want to extract future research ideas from papers.
-
-## OpenClaw / ClawHub CLI
-
-```bash
-openclaw skills install paper-deep-reading-teaching-explainer
-```
 
 ## License
 
