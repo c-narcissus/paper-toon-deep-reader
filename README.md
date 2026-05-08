@@ -1,4 +1,4 @@
-# Paper Deep Reading Teaching Explainer
+# Paper Toon Deep Reader
 
 **一句话：把论文变成能讲、能答、能在手机上翻看的卡通精读 PDF。**
 

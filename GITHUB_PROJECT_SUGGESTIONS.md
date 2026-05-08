@@ -12,7 +12,7 @@
 
 | Repository name | English description | 中文介绍 |
 | --- | --- | --- |
-| `paper-deep-reading-teaching-explainer` | Deep-read papers into teaching reports, cartoon storyboards, and final PDFs. | 与 skill slug 一致，清楚表达精读、教学讲解和 PDF 输出能力。 |
+| `paper-toon-deep-reader` | Deep-read papers into teaching reports, cartoon storyboards, and final PDFs. | 与 skill slug 一致，清楚表达精读、教学讲解和 PDF 输出能力。 |
 | `research-paper-comic-explainer` | Convert dense research papers into guided comic-style explainers. | 突出“论文转漫画讲解”的传播效果。 |
 | `paper-storyboard-tutor` | Build paper-grounded teaching storyboards from deep reading reports. | 强调从精读报告到教学分镜的流程。 |
 | `deepread-to-comic-pdf` | Generate deep reading reports first, then staged comic pages and final PDFs. | 直接说明三段式工作流：精读、漫画、PDF。 |

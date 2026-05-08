@@ -1,4 +1,4 @@
-# Paper Deep Reading Teaching Explainer
+# Paper Toon Deep Reader
 
 **One line: turn a paper into a teachable, defensible, phone-readable cartoon deep-reading PDF.**
 
