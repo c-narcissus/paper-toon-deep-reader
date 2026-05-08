@@ -31,6 +31,7 @@ The example below comes from a complete `SemiDFL` run: a deep reading report fir
 - **Explains next**: prepares 30-second, 3-minute, and 10-minute explanations, plus formula, figure, table, experiment, misconception, and defense scripts.
 - **Draws in stages**: generates a continuous cartoon comic made of multiple separate pages for background, method, experiments, limitations, future directions, and presentation packaging.
 - **Not a single image**: the default output is not one large poster or merged long image; a single image is only an explicitly requested compact overview.
+- **Small batches**: one page teaches one point, and complex sections can be generated across multiple replies with only a few pages each time.
 - **Assembles the PDF**: places approved cartoon pages first, renders the Markdown deep-reading report after them, and combines both into one shareable handout.
 - **Checks hallucinations**: prompts and generated images are checked against the original paper and the prior authoritative report.
 - **Keeps continuity**: character design, style, aspect ratio, dialogue language, symbols, page numbering, camera logic, and data-flow direction carry across later batches.
@@ -58,7 +59,7 @@ The skill works in both ChatGPT Web/App and Codex / coding-agent environments. I
 2. Add the repository skill zip to Project `Sources` first.
 3. After the skill is present in `Sources`, upload the paper PDF and/or LaTeX source.
 4. Ask for the full text-only deep reading report first. Do not generate images in the first step.
-5. Generate cartoon pages stage by stage. When the next step is image generation, explicitly ask for `生成多张连续的卡通图`.
+5. Generate cartoon pages stage by stage in small batches. When the next step is image generation, explicitly ask for `生成多张连续的卡通图`; for complex sections, continue with `继续生成下一批多张连续的卡通图`.
 6. After approving all images, run the final PDF assembly step: cartoon pages first, Markdown deep-reading report after them.
 
 Copy-ready prompts:
@@ -96,6 +97,7 @@ Codex, Claude Code, and other coding-agent environments can use the skill. Full 
 - **Language**: default Chinese dialogue, narrator captions, titles, and labels; users can switch to English, bilingual Chinese-English, or another language.
 - **Style**: default classroom blackboard cartoon; alternatives include flat educational infographic, hand-drawn whiteboard sketch, light anime research classroom, and soft 3D clay/cartoon.
 - **Characters**: default classroom scene with one teacher/narrator and 2-3 student or researcher listeners.
+- **Batch size**: default 2-4 images per generation reply to avoid overloaded pages; complex sections continue in later batches.
 - **Image count**: more images is not automatically better. Each image needs a distinct teaching contribution, and redundant opening, motivation, transition, or recap pages are pruned.
 
 ## Who It Is For
